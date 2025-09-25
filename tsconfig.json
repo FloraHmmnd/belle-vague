@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {},
+    "types": ["unplugin-vue-router/client"]
+  },
+  "include": [
+    "./typed-router.d.ts",
+    "src/auto-imports.d.ts",
+    "src/**/*.ts", 
+    "src/**/*.vue", 
+    "src/**/*.d.ts"
+  ],
+}
