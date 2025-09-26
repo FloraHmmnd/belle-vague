@@ -11,7 +11,11 @@ const { data: spots, isLoading, error } = useFetchSpots();
     </header>
     <div class="flex-1">
       <Map class="h-full">
-        <Marker v-for="spot in spots" :key="spot.id" :coords="spot.coordinates" />
+        <Marker v-for="spot in spots" :key="spot.id" :coords="spot.coordinates">
+          <Popup>
+            <Card :spot></Card>
+          </Popup>
+        </Marker>
         <Controls></Controls>
       </Map>
     </div>

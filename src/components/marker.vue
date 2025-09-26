@@ -2,7 +2,7 @@
 import { shallowRef, watch, onBeforeUnmount, inject, computed } from 'vue';
 import type { LngLatLike } from 'mapbox-gl';
 import Mapbox from 'mapbox-gl';
-import { type MapboxInjected, MAPBOX_PROVIDE_INJECT } from '../types/map';
+import { type MapInjected, MAPBOX_PROVIDE_INJECT, MARKER_PROVIDE_INJECT } from '../types/map';
 
 defineOptions({
   name: 'Marker',
@@ -10,7 +10,8 @@ defineOptions({
 
 const props = defineProps<{ coords: LngLatLike }>();
 const marker = shallowRef<mapboxgl.Marker>();
-const { mapbox } = inject(MAPBOX_PROVIDE_INJECT) as MapboxInjected;
+const { mapbox } = inject(MAPBOX_PROVIDE_INJECT) as MapInjected;
+provide(MARKER_PROVIDE_INJECT, { marker });
 
 watch(
   mapbox,
@@ -27,5 +28,5 @@ const render = () => null;
 </script>
 
 <template>
-  <render></render>
+  <slot />
 </template>
