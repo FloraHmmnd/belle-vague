@@ -19,7 +19,11 @@ const options = computed<mapboxgl.MapOptions>(() => ({
 const mapbox = shallowRef<mapboxgl.Map>();
 provide(MAPBOX_PROVIDE_INJECT, { mapbox });
 
-const route = useRoute();
+watch(mapbox, async () => {
+  if (!mapbox.value) return;
+  await nextTick();
+  mapbox.value.resize();
+});
 
 onMounted(() => {
   mapbox.value = new Mapbox.Map(options.value);
