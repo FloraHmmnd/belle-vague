@@ -13,6 +13,7 @@ declare module 'vue' {
     Map: typeof import('./components/map.vue')['default']
     Marker: typeof import('./components/marker.vue')['default']
     Popup: typeof import('./components/popup.vue')['default']
+    ReturnBtn: typeof import('./components/return-btn.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Title: typeof import('./components/title.vue')['default']

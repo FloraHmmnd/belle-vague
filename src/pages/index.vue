@@ -1,23 +1,15 @@
-<script setup lang="ts">
-import { useFetchSpots } from '../composables/spots';
-
-const { data: spots, isLoading, error } = useFetchSpots();
-</script>
-
 <template>
-  <div class="flex flex-col h-screen">
-    <header class="bg-neutral p-2 md:p-4">
+  <div class="h-screen relative">
+    <video
+      src="https://www.pexels.com/fr-fr/download/video/854351/"
+      autoplay
+      loop
+      muted
+      playsinline
+      class="absolute w-full h-full object-cover"
+    ></video>
+    <router-link class="px-6 absolute" to="/spots">
       <Title></Title>
-    </header>
-    <div class="flex-1">
-      <Map class="h-full">
-        <Marker v-for="spot in spots" :key="spot.id" :coords="spot.coordinates">
-          <Popup>
-            <Card :spot></Card>
-          </Popup>
-        </Marker>
-        <Controls></Controls>
-      </Map>
-    </div>
+    </router-link>
   </div>
 </template>
