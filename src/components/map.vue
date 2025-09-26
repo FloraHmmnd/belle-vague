@@ -22,6 +22,12 @@ provide(MAPBOX_PROVIDE_INJECT, { mapbox });
 onMounted(() => {
   mapbox.value = new Mapbox.Map(options.value);
 });
+
+onBeforeUnmount(() => {
+  if (!mapbox.value) return;
+  mapbox.value.remove();
+  mapbox.value = undefined;
+});
 </script>
 <template>
   <div class="contents">
