@@ -28,7 +28,7 @@ defineProps<{
         <span class="font-semibold text-ultramarine">Level:</span> {{ spot.level }}<br />
         <span class="font-semibold text-ultramarine">Best season:</span> {{ spot.bestSeason }}<br />
         <span class="font-semibold text-ultramarine">Water quality:</span>
-        {{ spot.waterQuality }}%<br />
+        {{ spot.waterQuality }}/100<br />
         <span class="font-semibold text-ultramarine">Air temp:</span>
         {{ spot.airTemperature }}°C<br />
         <span class="font-semibold text-ultramarine">Water temp:</span>
