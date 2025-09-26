@@ -12,7 +12,7 @@ const accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 const options = computed<mapboxgl.MapOptions>(() => ({
   accessToken,
   container: 'mapbox-map',
-  style: 'mapbox://styles/mapbox/streets-v11',
+  style: 'mapbox://styles/mapbox/satellite-streets-v12',
   center: [2.2137, 46.2276],
   zoom: 5,
 }));
