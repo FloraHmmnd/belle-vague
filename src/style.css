@@ -22,6 +22,8 @@
   .bg-flash-green { background-color: var(--color-flash-green); }
   .bg-white { background-color: var(--color-white); }
   .bg-neutral { background-color: var(--color-neutral); }
+  .bg-sky { background-color: var(--color-sky)}
+
 
   .text-ultramarine { color: var(--color-ultramarine); }
   .text-turquoise { color: var(--color-turquoise); }
@@ -29,6 +31,7 @@
   .text-flash-green { color: var(--color-flash-green); }
   .text-white { color: var(--color-white); }
   .text-neutral { color: var(--color-neutral); }
+  .text-sky { color: var(--color-sky); }
 
 
   .text-gradient {
@@ -53,6 +56,8 @@
   --color-fuchsia: #FF00FF;      
   --color-flash-green: #00FF00;   
   --color-white: #FFFFFF;         
-   --color-neutral: #F5F5F5; 
+  --color-neutral: #F5F5F5; 
+  --color-sky: #8ebfd1;
+
 }
 

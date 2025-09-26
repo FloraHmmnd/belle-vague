@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/vue-query';
+import { Spots } from 'src/types/spot';
 
 export function useFetchSpots() {
   return useQuery({

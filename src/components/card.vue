@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { Spot } from 'src/types/spots';
+import { Spot } from 'src/types/spot';
 
 defineOptions({
   name: 'card',
 });
 
 defineProps<{
-  spot?: Spot;
+  spot: Spot;
 }>();
 </script>
 
@@ -22,18 +22,17 @@ defineProps<{
       />
     </div>
     <div class="p-2 flex-1 text-marine">
-      <h3 class="font-bold text-lg text-gradient">{{ spot?.name }}</h3>
-      <p class="text-sm text-sky">{{ spot?.address }}</p>
+      <h3 class="font-bold text-lg text-gradient">{{ spot.name }}</h3>
+      <p class="text-sm text-sky">{{ spot.address }}</p>
       <div class="mt-1 text-sm">
-        <span class="font-semibold text-ultramarine">Level:</span> {{ spot?.level }}<br />
-        <span class="font-semibold text-ultramarine">Best season:</span> {{ spot?.bestSeason
-        }}<br />
+        <span class="font-semibold text-ultramarine">Level:</span> {{ spot.level }}<br />
+        <span class="font-semibold text-ultramarine">Best season:</span> {{ spot.bestSeason }}<br />
         <span class="font-semibold text-ultramarine">Water quality:</span>
-        {{ spot?.waterQuality }}%<br />
+        {{ spot.waterQuality }}%<br />
         <span class="font-semibold text-ultramarine">Air temp:</span>
-        {{ spot?.airTemperature }}°C<br />
+        {{ spot.airTemperature }}°C<br />
         <span class="font-semibold text-ultramarine">Water temp:</span>
-        {{ spot?.waterTemperature }}°C
+        {{ spot.waterTemperature }}°C
       </div>
     </div>
   </div>
