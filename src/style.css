@@ -1,1 +1,58 @@
 @import 'tailwindcss';
+
+@font-face {
+  font-family: "PicNic";
+  src: url("/fonts/PicNic.woff2") format("woff2"),
+       url("/fonts/PicNic.woff") format("woff"),
+       url("/fonts/PicNic-Regular.otf") format("otf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Classe utilitaire Tailwind */
+@layer utilities {
+  .font-picnic {
+    font-family: "PicNic", sans-serif;
+  }
+
+  .bg-ultramarine { background-color: var(--color-ultramarine); }
+  .bg-turquoise { background-color: var(--color-turquoise); }
+  .bg-fuchsia { background-color: var(--color-fuchsia); }
+  .bg-flash-green { background-color: var(--color-flash-green); }
+  .bg-white { background-color: var(--color-white); }
+  .bg-neutral { background-color: var(--color-neutral); }
+
+  .text-ultramarine { color: var(--color-ultramarine); }
+  .text-turquoise { color: var(--color-turquoise); }
+  .text-fuchsia { color: var(--color-fuchsia); }
+  .text-flash-green { color: var(--color-flash-green); }
+  .text-white { color: var(--color-white); }
+  .text-neutral { color: var(--color-neutral); }
+
+
+  .text-gradient {
+    background: linear-gradient(
+        90deg,
+      var(--color-ultramarine) 0%,
+      var(--color-turquoise) 25%,
+      var(--color-flash-green) 30%,
+      var(--color-fuchsia) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+}
+
+:root {
+  --color-ultramarine: #1A4F9C;   
+  --color-turquoise: #40E0D0;     
+  --color-fuchsia: #FF00FF;      
+  --color-flash-green: #00FF00;   
+  --color-white: #FFFFFF;         
+   --color-neutral: #F5F5F5; 
+}
+
