@@ -4,7 +4,6 @@ import {
   Chart as ChartJS,
   Title,
   Tooltip,
-  Legend,
   LineElement,
   CategoryScale,
   LinearScale,

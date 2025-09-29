@@ -10,7 +10,7 @@ const { data: spot, isLoading, isError } = useFetchSpot();
     <template v-else>
       <section class="md:border-r w-full md:w-1/2 h-full bg-neutral overflow-y-auto">
         <RouterLink to="/spots" class="sticky top-0">
-          <ReturnBtn></ReturnBtn>
+          <ReturnBtn />
         </RouterLink>
         <Description :spot />
       </section>
