@@ -10,6 +10,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     Card: typeof import('./components/card.vue')['default']
     Controls: typeof import('./components/controls.vue')['default']
+    Description: typeof import('./components/description.vue')['default']
     Map: typeof import('./components/map.vue')['default']
     Marker: typeof import('./components/marker.vue')['default']
     Popup: typeof import('./components/popup.vue')['default']
