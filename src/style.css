@@ -16,7 +16,12 @@
     font-family: "PicNic", sans-serif;
   }
 
+    .font-quicksand {
+    font-family: "Quicksand", sans-serif;
+  }
+
   .bg-ultramarine { background-color: var(--color-ultramarine); }
+  .bg-dark { color: var(--color-dark); }
   .bg-turquoise { background-color: var(--color-turquoise); }
   .bg-fuchsia { background-color: var(--color-fuchsia); }
   .bg-flash-green { background-color: var(--color-flash-green); }
@@ -26,6 +31,7 @@
 
 
   .text-ultramarine { color: var(--color-ultramarine); }
+  .text-dark { color: var(--color-dark); }
   .text-turquoise { color: var(--color-turquoise); }
   .text-fuchsia { color: var(--color-fuchsia); }
   .text-flash-green { color: var(--color-flash-green); }
@@ -51,7 +57,8 @@
 }
 
 :root {
-  --color-ultramarine: #1A4F9C;   
+  --color-ultramarine: #1A4F9C;
+  --color-dark: #242e3b;   
   --color-turquoise: #40E0D0;     
   --color-fuchsia: #FF00FF;      
   --color-flash-green: #00FF00;   
