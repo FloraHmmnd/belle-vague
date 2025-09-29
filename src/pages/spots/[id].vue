@@ -4,17 +4,17 @@ import { useFetchSpot } from '../../composables/spots';
 const { data: spot, isLoading, isError } = useFetchSpot();
 </script>
 <template>
-  <div class="flex flex-col h-screen md:flex-row relative">
-    <p v-if="isLoading" class="text-gradient font-picnic p-6 text-2xl md:text-6xl">Loading...</p>
-    <p v-else-if="isError" class="text-gradient font-picnic p-6 text-2xl md:text-6xl">Error</p>
+  <div class="flex flex-col h-screen lg:flex-row relative">
+    <p v-if="isLoading" class="text-gradient font-picnic p-6 text-2xl lg:text-6xl">Loading...</p>
+    <p v-else-if="isError" class="text-gradient font-picnic p-6 text-2xl lg:text-6xl">Error</p>
     <template v-else>
-      <section class="md:border-r w-full md:w-1/2 h-full bg-neutral overflow-y-auto">
+      <section class="lg:border-r w-full lg:w-1/2 h-full bg-neutral lg:overflow-y-auto">
         <RouterLink to="/spots" class="sticky top-0">
           <ReturnBtn />
         </RouterLink>
         <Description :spot />
       </section>
-      <section class="w-full h-full overflow-y-auto">
+      <section class="w-full h-full lg:overflow-y-auto">
         <Observations :spot />
       </section>
     </template>

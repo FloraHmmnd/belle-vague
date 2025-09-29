@@ -17,9 +17,9 @@ const spotPage = computed(() => `/spots/${props.spot.id}`);
   <RouterLink
     :to="spotPage"
     aria-label="See the spot"
-    class="flex flex-col md:flex-row w-80 max-w-xs bg-neutral rounded-lg shadow-md overflow-hidden font-quicksand"
+    class="flex flex-col lg:flex-row w-80 max-w-xs bg-neutral rounded-lg shadow-md overflow-hidden font-quicksand"
   >
-    <div class="w-full md:w-40 aspect-[3/2] flex-shrink-0">
+    <div class="w-full lg:w-40 aspect-[3/2] flex-shrink-0">
       <img
         src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=873&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         alt="spot photo"
