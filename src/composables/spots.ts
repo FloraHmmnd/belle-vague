@@ -10,3 +10,13 @@ export function useFetchSpots() {
     },
   });
 }
+
+export function useFetchSpot() {
+  return useQuery({
+    queryKey: ['FETCH_BELLE_VAGUE_SPOT'],
+    queryFn: async () => {
+      const res = await fetch('/datas/spot.json');
+      return res.json();
+    },
+  });
+}

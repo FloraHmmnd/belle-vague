@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useFetchSpots } from '../../composables/spots';
 
-const { data: spots, isLoading, error } = useFetchSpots();
+const { data: spots } = useFetchSpots();
 </script>
 
 <template>
