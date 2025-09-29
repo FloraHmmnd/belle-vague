@@ -9,7 +9,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="p-6 overflow-y-auto h-full text-dark font-quicksand flex flex-col gap-4">
+  <div class="p-6 h-full text-dark font-quicksand flex flex-col gap-4">
     <h1 class="text-6xl font-bold text-gradient font-picnic leading-tight">{{ spot.name }}</h1>
     <p class="text-sm text-sky">{{ spot.address }}</p>
     <div class="grid grid-cols-2 gap-y-2 text-sm">
