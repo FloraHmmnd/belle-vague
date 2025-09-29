@@ -1,17 +1,22 @@
 <script setup lang="ts">
 import { Spot } from 'src/types/spot';
+import { RouterLink } from 'vue-router';
 
 defineOptions({
-  name: 'card',
+  name: 'Card',
 });
 
-defineProps<{
+const props = defineProps<{
   spot: Spot;
 }>();
+
+const spotPage = computed(() => `/spots/${props.spot.id}`);
 </script>
 
 <template>
-  <div
+  <RouterLink
+    :to="spotPage"
+    aria-label="See the spot"
     class="flex flex-col md:flex-row w-80 max-w-xs bg-neutral rounded-lg shadow-md overflow-hidden font-quicksand"
   >
     <div class="w-full md:w-40 aspect-[3/2] flex-shrink-0">
@@ -35,5 +40,5 @@ defineProps<{
         {{ spot.waterTemperature }}°C
       </div>
     </div>
-  </div>
+  </RouterLink>
 </template>

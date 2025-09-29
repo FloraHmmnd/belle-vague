@@ -20,6 +20,7 @@ declare module 'vue-router/auto-routes' {
   export interface RouteNamedMap {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
     '/spots/': RouteRecordInfo<'/spots/', '/spots', Record<never, never>, Record<never, never>>,
+    '/spots/[id]': RouteRecordInfo<'/spots/[id]', '/spots/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
   }
 
   /**
@@ -39,6 +40,10 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/spots/index.vue': {
       routes: '/spots/'
+      views: never
+    }
+    'src/pages/spots/[id].vue': {
+      routes: '/spots/[id]'
       views: never
     }
   }
