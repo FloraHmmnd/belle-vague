@@ -34,7 +34,7 @@ export interface SpotDetail {
   history: string;
   conditions: string;
   tips: string;
-  obsvervations: Observation[];
+  observations: Observation[];
 }
 
 export interface Observation {
