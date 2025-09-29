@@ -2,6 +2,7 @@
 import Mapbox from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { MAPBOX_PROVIDE_INJECT } from '../types/map';
+import { useElementSize } from '@vueuse/core';
 
 defineOptions({
   name: 'Map',
@@ -17,27 +18,34 @@ const options = computed<mapboxgl.MapOptions>(() => ({
   zoom: 5,
 }));
 const mapbox = shallowRef<mapboxgl.Map>();
+const mapRef = useTemplateRef('map');
 provide(MAPBOX_PROVIDE_INJECT, { mapbox });
+const isMapLoaded = ref(false);
 
-watch(mapbox, async () => {
+const { width, height } = useElementSize(mapRef);
+
+watch([width, height, isMapLoaded], () => {
   if (!mapbox.value) return;
-  await nextTick();
   mapbox.value.resize();
 });
 
 onMounted(() => {
   mapbox.value = new Mapbox.Map(options.value);
+  mapbox.value.on('style.load', () => {
+    isMapLoaded.value = true;
+  });
 });
 
 onBeforeUnmount(() => {
   if (!mapbox.value) return;
   mapbox.value.remove();
   mapbox.value = undefined;
+  isMapLoaded.value = false;
 });
 </script>
 <template>
   <div class="contents">
-    <div id="mapbox-map" v-bind="$attrs"></div>
+    <div id="mapbox-map" v-bind="$attrs" ref="map"></div>
     <slot></slot>
   </div>
 </template>
