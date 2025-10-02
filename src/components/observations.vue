@@ -8,8 +8,10 @@ import {
   CategoryScale,
   LinearScale,
   PointElement,
+  plugins,
 } from 'chart.js';
 import { Line } from 'vue-chartjs';
+import SwellChart from './swell-chart.vue';
 
 defineOptions({
   name: 'Observations',
@@ -69,13 +71,19 @@ function createDataset(
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: true,
+  plugins: {
+    legend: { display: false },
+  },
 };
 </script>
 
 <template>
   <div class="flex flex-col h-full gap-4 px-4">
+    <SwellChart :spot></SwellChart>
     <div class="pt-4">
-      <h2 class="text-lg font-semibold text-gradient">{{ airTempChartData.datasets[0].label }}</h2>
+      <h2 class="text-lg font-semibold text-gradient">
+        {{ airTempChartData.datasets[0].label }}
+      </h2>
       <Line :data="airTempChartData" :options="chartOptions" />
     </div>
     <div class="border-t pt-4">
@@ -91,11 +99,15 @@ const chartOptions = {
       <Line :data="waterQualityChartData" :options="chartOptions" />
     </div>
     <div class="border-t pt-4">
-      <h2 class="text-lg font-semibold text-gradient">{{ acidityChartData.datasets[0].label }}</h2>
+      <h2 class="text-lg font-semibold text-gradient">
+        {{ acidityChartData.datasets[0].label }}
+      </h2>
       <Line :data="acidityChartData" :options="chartOptions" />
     </div>
     <div class="border-t pt-4">
-      <h2 class="text-lg font-semibold text-gradient">{{ salinityChartData.datasets[0].label }}</h2>
+      <h2 class="text-lg font-semibold text-gradient">
+        {{ salinityChartData.datasets[0].label }}
+      </h2>
       <Line :data="salinityChartData" :options="chartOptions" />
     </div>
   </div>

@@ -21,6 +21,7 @@ declare module 'vue' {
     ReturnBtn: typeof import('./components/return-btn.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SwellChart: typeof import('./components/swell-chart.vue')['default']
     Title: typeof import('./components/title.vue')['default']
   }
 }
