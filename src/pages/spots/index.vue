@@ -11,11 +11,18 @@ const isMapLoaded = ref(false);
 
 <template>
   <div class="flex flex-col h-screen relative">
-    <RouterLink to="/" class="absolute z-10 left-3">
-      <ReturnBtn />
-    </RouterLink>
+    <div
+      class="absolute z-10 top-3 left-3 right-3 flex flex-col lg:flex-row gap-2 lg:justify-between lg:items-center"
+    >
+      <RouterLink to="/">
+        <ReturnBtn />
+      </RouterLink>
+      <div class="flex justify-center lg:justify-end w-full lg:w-auto">
+        <LocationSearch v-model="selectedLocation" />
+      </div>
+    </div>
+
     <div class="flex-1 relative">
-      <LocationSearch class="absolute z-10 top-4 right-4" v-model="selectedLocation" />
       <Map class="h-full" :center v-model="isMapLoaded">
         <Controls />
         <template v-if="isMapLoaded">
