@@ -7,7 +7,9 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {},
-    "types": ["unplugin-vue-router/client"]
+    "types": ["unplugin-vue-router/client"],
+    "skipLibCheck": true
+
   },
   "include": [
     "./typed-router.d.ts",
