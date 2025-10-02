@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/vue-query';
-import { Spots } from 'src/types/spot';
+import { SpotDetail, Spots } from 'src/types/spot';
 
 export function useFetchSpots() {
-  return useQuery({
+  return useQuery<Spots>({
     queryKey: ['FETCH_BELLE_VAGUE_SPOTS'],
     queryFn: async () => {
       const res = await fetch('/datas/spots.json');
@@ -12,7 +12,7 @@ export function useFetchSpots() {
 }
 
 export function useFetchSpot() {
-  return useQuery({
+  return useQuery<SpotDetail>({
     queryKey: ['FETCH_BELLE_VAGUE_SPOT'],
     queryFn: async () => {
       const res = await fetch('/datas/spot.json');

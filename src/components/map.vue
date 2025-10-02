@@ -19,8 +19,9 @@ const options = computed<mapboxgl.MapOptions>(() => ({
 }));
 const mapbox = shallowRef<mapboxgl.Map>();
 const mapRef = useTemplateRef('map');
-provide(MAPBOX_PROVIDE_INJECT, { mapbox });
 const isMapLoaded = ref(false);
+
+provide(MAPBOX_PROVIDE_INJECT, { mapbox, isMapLoaded });
 
 const { width, height } = useElementSize(mapRef);
 

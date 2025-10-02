@@ -7,7 +7,7 @@ defineOptions({
 });
 
 const popup = shallowRef<mapboxgl.Popup>();
-const content = shallowRef<null | HTMLElement>(null);
+const content = shallowRef<null | HTMLElement>();
 const { marker } = inject<MarkerInjected>(MARKER_PROVIDE_INJECT) as MarkerInjected;
 
 watch(

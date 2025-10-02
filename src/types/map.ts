@@ -2,6 +2,7 @@ import type { InjectionKey, Ref } from 'vue';
 
 export interface MapInjected {
   mapbox: Ref<mapboxgl.Map | undefined>;
+  isMapLoaded: Ref<boolean>;
 }
 
 export const MAPBOX_PROVIDE_INJECT = Symbol(
