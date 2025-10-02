@@ -11,12 +11,13 @@ export function useFetchSpots() {
   });
 }
 
-export function useFetchSpot() {
+export function useFetchSpot(spotId: Ref<string>) {
   return useQuery<SpotDetail>({
     queryKey: ['FETCH_BELLE_VAGUE_SPOT'],
     queryFn: async () => {
-      const res = await fetch('/datas/spot.json');
+      const res = await fetch(`/datas/${spotId.value}.json`);
       return res.json();
     },
+    enabled: computed(() => !!spotId.value),
   });
 }

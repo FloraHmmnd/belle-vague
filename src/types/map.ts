@@ -38,4 +38,4 @@ export interface GeocodingFeature {
   }[];
 }
 
-export const DEFAULT_CENTER = [2.2137, 46.2276] as [number, number];
+export const DEFAULT_CENTER = [-10, 20] as [number, number];

@@ -26,7 +26,7 @@ const options = computed<mapboxgl.MapOptions>(() => ({
   container: 'mapbox-map',
   style: 'mapbox://styles/mapbox/satellite-streets-v12',
   center: centerRef.value,
-  zoom: 5,
+  zoom: 2.5,
 }));
 const mapbox = shallowRef<mapboxgl.Map>();
 const mapRef = useTemplateRef('map');
@@ -44,8 +44,8 @@ watch([width, height, isMapLoaded], () => {
 watch(centerRef, () => {
   if (!mapbox.value) return;
   mapbox.value.setCenter(centerRef.value);
-  if (mapbox.value.getZoom() < 8) {
-    mapbox.value.setZoom(8);
+  if (mapbox.value.getZoom() < 12) {
+    mapbox.value.setZoom(12);
   }
 });
 
