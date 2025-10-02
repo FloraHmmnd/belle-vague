@@ -15,7 +15,7 @@ const props = withDefaults(
     center?: LngLatLike;
   }>(),
   {
-    center: (): LngLatLike => [2.2137, 46.2276],
+    center: (): LngLatLike => DEFAULT_CENTER,
   },
 );
 

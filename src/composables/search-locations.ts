@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/vue-query';
+import type { GeocodingFeature } from '../types/map';
 
 export function useSearchLocations(location: Ref<string>) {
   const accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
-  return useQuery({
+  return useQuery<GeocodingFeature[]>({
     queryKey: ['USE_SEARCH_LOCATIONS', location],
     queryFn: async () => {
       const baseUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(location.value)}.json`;

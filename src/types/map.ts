@@ -25,7 +25,7 @@ export interface GeocodingFeature {
   text: string;
   place_name: string;
   bbox?: [number, number, number, number];
-  center: [number, number];
+  center?: [number, number];
   geometry: {
     type: 'Point';
     coordinates: [number, number];
