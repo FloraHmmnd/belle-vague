@@ -44,8 +44,8 @@ watch([width, height, isMapLoaded], () => {
 watch(centerRef, () => {
   if (!mapbox.value) return;
   mapbox.value.setCenter(centerRef.value);
-  if (mapbox.value.getZoom() < 8) {
-    mapbox.value.setZoom(8);
+  if (mapbox.value.getZoom() < 12) {
+    mapbox.value.setZoom(12);
   }
 });
 
