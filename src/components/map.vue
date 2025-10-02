@@ -26,7 +26,7 @@ const options = computed<mapboxgl.MapOptions>(() => ({
   container: 'mapbox-map',
   style: 'mapbox://styles/mapbox/satellite-streets-v12',
   center: centerRef.value,
-  zoom: 5,
+  zoom: 2.5,
 }));
 const mapbox = shallowRef<mapboxgl.Map>();
 const mapRef = useTemplateRef('map');
