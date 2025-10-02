@@ -1,20 +1,31 @@
 <script setup lang="ts">
 import Mapbox from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { MAPBOX_PROVIDE_INJECT } from '../types/map';
+import { MAPBOX_PROVIDE_INJECT, DEFAULT_CENTER } from '../types/map';
 import { useElementSize } from '@vueuse/core';
+import type { LngLatLike } from 'mapbox-gl';
 
 defineOptions({
   name: 'Map',
   inheritAttrs: false,
 });
 
+const props = withDefaults(
+  defineProps<{
+    center?: LngLatLike;
+  }>(),
+  {
+    center: (): LngLatLike => [2.2137, 46.2276],
+  },
+);
+
 const accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
+const centerRef = computed(() => props.center);
 const options = computed<mapboxgl.MapOptions>(() => ({
   accessToken,
   container: 'mapbox-map',
   style: 'mapbox://styles/mapbox/satellite-streets-v12',
-  center: [2.2137, 46.2276],
+  center: centerRef.value,
   zoom: 5,
 }));
 const mapbox = shallowRef<mapboxgl.Map>();
@@ -28,6 +39,14 @@ const { width, height } = useElementSize(mapRef);
 watch([width, height, isMapLoaded], () => {
   if (!mapbox.value) return;
   mapbox.value.resize();
+});
+
+watch(centerRef, () => {
+  if (!mapbox.value) return;
+  mapbox.value.setCenter(centerRef.value);
+  if (mapbox.value.getZoom() < 8) {
+    mapbox.value.setZoom(8);
+  }
 });
 
 onMounted(() => {
@@ -46,7 +65,7 @@ onBeforeUnmount(() => {
 </script>
 <template>
   <div class="contents">
-    <div id="mapbox-map" v-bind="$attrs" ref="map"></div>
-    <slot></slot>
+    <div id="mapbox-map" v-bind="$attrs" ref="map" />
+    <slot />
   </div>
 </template>
