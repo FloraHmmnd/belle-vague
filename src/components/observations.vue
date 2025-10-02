@@ -25,6 +25,33 @@ const labels = computed(() =>
   props.spot.observations.map((observation) => new Date(observation.date).toLocaleDateString()),
 );
 
+const CHART_COLOR = '#1E40AF';
+
+const airTempChartData = computed(() => ({
+  labels: labels.value,
+  datasets: [createDataset('Air Temp °C', 'airTemperature', CHART_COLOR)],
+}));
+
+const waterTempChartData = computed(() => ({
+  labels: labels.value,
+  datasets: [createDataset('Water Temp °C', 'waterTemperature', CHART_COLOR)],
+}));
+
+const waterQualityChartData = computed(() => ({
+  labels: labels.value,
+  datasets: [createDataset('Water Quality %', 'waterQuality', CHART_COLOR)],
+}));
+
+const acidityChartData = computed(() => ({
+  labels: labels.value,
+  datasets: [createDataset('Acidity PH', 'ph', CHART_COLOR)],
+}));
+
+const salinityChartData = computed(() => ({
+  labels: labels.value,
+  datasets: [createDataset('Salinity PSU', 'salinity', CHART_COLOR)],
+}));
+
 function createDataset(
   label: string,
   key: keyof (typeof props.spot.observations)[0],
@@ -34,35 +61,10 @@ function createDataset(
     label,
     data: props.spot.observations.map((observation) => observation[key] as number),
     borderColor: color,
-    backgroundColor: color + '33',
+    backgroundColor: color,
     tension: 0.3,
   };
 }
-
-const airTempChartData = computed(() => ({
-  labels: labels.value,
-  datasets: [createDataset('Air Temp °C', 'airTemperature', '#1E40AF')],
-}));
-
-const waterTempChartData = computed(() => ({
-  labels: labels.value,
-  datasets: [createDataset('Water Temp °C', 'waterTemperature', '#1E40AF')],
-}));
-
-const waterQualityChartData = computed(() => ({
-  labels: labels.value,
-  datasets: [createDataset('Water Quality %', 'waterQuality', '#1E40AF')],
-}));
-
-const acidityChartData = computed(() => ({
-  labels: labels.value,
-  datasets: [createDataset('Acidity PH', 'ph', '#1E40AF')],
-}));
-
-const salinityChartData = computed(() => ({
-  labels: labels.value,
-  datasets: [createDataset('Salinity PSU', 'salinity', '#1E40AF')],
-}));
 
 const chartOptions = {
   responsive: true,
