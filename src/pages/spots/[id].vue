@@ -9,7 +9,7 @@ const spotIdRef = computed(() => params.id);
 const { data: spot, isLoading, isError } = useFetchSpot(spotIdRef);
 </script>
 <template>
-  <div class="flex flex-col min-h-screen lg:flex-row relative">
+  <div class="flex flex-col min-h-screen lg:h-screen lg:flex-row relative">
     <p v-if="isLoading" class="text-gradient font-picnic p-6 text-2xl lg:text-6xl">Loading...</p>
     <p v-else-if="isError" class="text-gradient font-picnic p-6 text-2xl lg:text-6xl">Error</p>
     <template v-else-if="spot">
