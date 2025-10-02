@@ -54,6 +54,20 @@
     color: transparent;
   }
 
+  .hover\:text-gradient:hover {
+    background: linear-gradient(
+      90deg,
+      var(--color-ultramarine) 0%,
+      var(--color-turquoise) 25%,
+      var(--color-flash-green) 30%,
+      var(--color-fuchsia) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
 }
 
 :root {

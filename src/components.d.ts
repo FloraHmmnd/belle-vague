@@ -11,6 +11,7 @@ declare module 'vue' {
     Card: typeof import('./components/card.vue')['default']
     Controls: typeof import('./components/controls.vue')['default']
     Description: typeof import('./components/description.vue')['default']
+    Footer: typeof import('./components/footer.vue')['default']
     LocationSearch: typeof import('./components/location-search.vue')['default']
     Map: typeof import('./components/map.vue')['default']
     Marker: typeof import('./components/marker.vue')['default']
