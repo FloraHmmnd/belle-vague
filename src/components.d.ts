@@ -8,6 +8,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AcidityChart: typeof import('./components/acidity-chart.vue')['default']
     Card: typeof import('./components/card.vue')['default']
     Controls: typeof import('./components/controls.vue')['default']
     Description: typeof import('./components/description.vue')['default']
@@ -21,7 +22,10 @@ declare module 'vue' {
     ReturnBtn: typeof import('./components/return-btn.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SalinityChart: typeof import('./components/salinity-chart.vue')['default']
     SwellChart: typeof import('./components/swell-chart.vue')['default']
+    TemperatureChart: typeof import('./components/temperature-chart.vue')['default']
     Title: typeof import('./components/title.vue')['default']
+    WaterQualityChart: typeof import('./components/water-quality-chart.vue')['default']
   }
 }

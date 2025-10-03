@@ -11,10 +11,11 @@ import {
 } from 'chart.js';
 import { Line } from 'vue-chartjs';
 import type { Swell } from '../types/spot';
+import { SpotDetail } from '../types/spot';
 
 defineOptions({ name: 'SwellChart' });
 
-const props = defineProps<{ spot: any }>();
+const props = defineProps<{ spot: SpotDetail }>();
 
 ChartJS.register(Title, Tooltip, LineElement, CategoryScale, LinearScale, PointElement, Legend);
 
@@ -71,7 +72,7 @@ const swellChartOptions = {
 </script>
 
 <template>
-  <div class="h-96 w-full py-4">
+  <div class="h-96 w-full">
     <h2 class="text-lg font-semibold text-gradient mb-2">Swell Overview</h2>
     <Line :data="swellChartData" :options="swellChartOptions" />
   </div>
