@@ -43,6 +43,12 @@ const chartOptions = {
   plugins: {
     legend: { display: false },
   },
+  scales: {
+    y: {
+      min: 0,
+      max: 14,
+    },
+  },
 };
 </script>
 

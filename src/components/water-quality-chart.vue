@@ -29,7 +29,7 @@ const waterQualityChartData = computed(() => ({
   labels: labels.value,
   datasets: [
     {
-      data: props.spot.observations.map((o: Observation) => o.ph),
+      data: props.spot.observations.map((o: Observation) => o.waterQuality),
       borderColor: CHART_COLOR,
       backgroundColor: CHART_COLOR,
       tension: 0.3,
@@ -42,6 +42,12 @@ const chartOptions = {
   maintainAspectRatio: true,
   plugins: {
     legend: { display: false },
+  },
+  scales: {
+    y: {
+      min: 0,
+      max: 100,
+    },
   },
 };
 </script>

@@ -43,12 +43,18 @@ const chartOptions = {
   plugins: {
     legend: { display: false },
   },
+  scales: {
+    y: {
+      min: 0,
+      max: 40,
+    },
+  },
 };
 </script>
 
 <template>
   <div class="h-96 w-full">
-    <h2 class="text-lg font-semibold text-gradient mb-2">Salinity</h2>
+    <h2 class="text-lg font-semibold text-gradient mb-2">Salinity PSU</h2>
     <Line :data="salinityChartData" :options="chartOptions" />
   </div>
 </template>

@@ -57,7 +57,8 @@ const temperatureChartOptions = {
   },
   scales: {
     y: {
-      beginAtZero: true,
+      min: 0,
+      max: 50,
     },
   },
 };
