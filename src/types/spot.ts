@@ -35,6 +35,7 @@ export interface SpotDetail {
   conditions: string;
   tips: string;
   observations: Observation[];
+  swell: Swell[];
 }
 
 export interface Observation {
@@ -44,4 +45,11 @@ export interface Observation {
   airTemperature: number;
   waterTemperature: number;
   waterQuality: number;
+}
+
+export interface Swell {
+  height: number;
+  period: number;
+  direction: number;
+  date: string;
 }
