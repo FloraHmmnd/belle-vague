@@ -21,7 +21,7 @@ const props = withDefaults(
 
 const accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 const centerRef = computed(() => props.center);
-const options = computed<mapboxgl.MapOptions>(() => ({
+const mapOptions = computed<mapboxgl.MapOptions>(() => ({
   accessToken,
   container: 'mapbox-map',
   style: 'mapbox://styles/mapbox/satellite-streets-v12',
@@ -29,11 +29,13 @@ const options = computed<mapboxgl.MapOptions>(() => ({
   zoom: 2.5,
 }));
 const mapbox = shallowRef<mapboxgl.Map>();
-const isMapLoaded = defineModel<boolean>({ default: false });
+const isMapLoaded = defineModel<boolean>('isMapLoaded', { default: false });
+const zoomLevel = defineModel<number>('zoomLevel', { default: 2.5 });
+
 const mapContainer = useTemplateRef('mapContainer');
 const { width, height } = useElementSize(mapContainer);
 
-provide(MAPBOX_PROVIDE_INJECT, { mapbox });
+provide(MAPBOX_PROVIDE_INJECT, { mapbox, isMapLoaded });
 
 watch(centerRef, () => {
   if (!mapbox.value) return;
@@ -49,9 +51,13 @@ watch([width, height, isMapLoaded], () => {
 });
 
 onMounted(() => {
-  mapbox.value = new Mapbox.Map(options.value);
+  mapbox.value = new Mapbox.Map(mapOptions.value);
   mapbox.value.on('style.load', () => {
     isMapLoaded.value = true;
+  });
+  mapbox.value.on('zoom', () => {
+    if (!mapbox.value) return;
+    zoomLevel.value = mapbox.value.getZoom();
   });
 });
 

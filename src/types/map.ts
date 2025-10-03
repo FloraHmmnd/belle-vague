@@ -3,6 +3,7 @@ import type { LngLatLike } from 'mapbox-gl';
 
 export interface MapInjected {
   mapbox: Ref<mapboxgl.Map | undefined>;
+  isMapLoaded: Ref<boolean>;
 }
 
 export const MAPBOX_PROVIDE_INJECT = Symbol(

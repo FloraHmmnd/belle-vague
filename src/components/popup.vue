@@ -1,26 +1,40 @@
 <script setup lang="ts">
 import { type MarkerInjected, MARKER_PROVIDE_INJECT } from '../types/map';
-import Mapbox from 'mapbox-gl';
+import { type MapInjected, MAPBOX_PROVIDE_INJECT } from '../types/map';
+
+import Mapbox, { LngLatLike } from 'mapbox-gl';
 
 defineOptions({
   name: 'Popup',
 });
 
+const props = defineProps<{
+  coords?: LngLatLike;
+}>();
+
 const popup = shallowRef<mapboxgl.Popup>();
 const content = shallowRef<null | HTMLElement>();
-const { marker } = inject<MarkerInjected>(MARKER_PROVIDE_INJECT) as MarkerInjected;
+const injectedMarker = inject<MarkerInjected | null>(MARKER_PROVIDE_INJECT, null);
+const { mapbox } = inject(MAPBOX_PROVIDE_INJECT) as MapInjected;
+const coordsRef = computed(() =>
+  typeof props.coords === 'string' ? JSON.parse(props.coords) : props.coords,
+);
 
 watch(
-  [marker, content],
+  [() => injectedMarker?.marker, content, coordsRef],
   () => {
-    if (!marker.value || !content.value) return;
+    if (!content.value) return;
     popup.value = new Mapbox.Popup({
       closeButton: false,
       className: 'custom-mapbox-popup',
       maxWidth: '500px',
     });
     popup.value.setDOMContent(content.value as Node);
-    marker.value.setPopup(popup.value);
+    if (injectedMarker?.marker?.value) {
+      injectedMarker.marker.value.setPopup(popup.value);
+    } else if (mapbox.value && coordsRef.value) {
+      popup.value.setLngLat(coordsRef.value).addTo(mapbox.value);
+    }
   },
   { immediate: true },
 );

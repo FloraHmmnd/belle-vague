@@ -23,6 +23,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SalinityChart: typeof import('./components/salinity-chart.vue')['default']
+    SpotLayer: typeof import('./components/spot-layer.vue')['default']
     SwellChart: typeof import('./components/swell-chart.vue')['default']
     TemperatureChart: typeof import('./components/temperature-chart.vue')['default']
     Title: typeof import('./components/title.vue')['default']

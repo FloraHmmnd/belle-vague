@@ -4,7 +4,7 @@ export interface Spot {
   id: string;
   name: string;
   address: string;
-  coordinates: LngLatLike;
+  coordinates: [number, number];
   level: Level;
   bestSeason: BestSeason;
   photo: string;

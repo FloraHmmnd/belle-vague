@@ -23,8 +23,6 @@ watch(
 );
 
 onBeforeUnmount(() => marker.value?.remove());
-
-const render = () => null;
 </script>
 
 <template>
