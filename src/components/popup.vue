@@ -2,14 +2,14 @@
 import { type MarkerInjected, MARKER_PROVIDE_INJECT } from '../types/map';
 import { type MapInjected, MAPBOX_PROVIDE_INJECT } from '../types/map';
 
-import Mapbox, { LngLatLike } from 'mapbox-gl';
+import Mapbox from 'mapbox-gl';
 
 defineOptions({
   name: 'Popup',
 });
 
 const props = defineProps<{
-  coords?: LngLatLike;
+  coords?: [number, number];
 }>();
 
 const popup = shallowRef<mapboxgl.Popup>();

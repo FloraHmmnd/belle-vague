@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import Mapbox from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { MAPBOX_PROVIDE_INJECT, DEFAULT_CENTER } from '../types/map';
-import type { LngLatLike } from 'mapbox-gl';
+import { MAPBOX_PROVIDE_INJECT, DEFAULT_CENTER, DEFAULT_ZOOM_LEVEL } from '../types/map';
 import { useElementSize } from '@vueuse/core';
 
 defineOptions({
@@ -12,10 +11,10 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<{
-    center?: LngLatLike;
+    center?: [number, number];
   }>(),
   {
-    center: (): LngLatLike => DEFAULT_CENTER,
+    center: (): [number, number] => DEFAULT_CENTER,
   },
 );
 
@@ -26,11 +25,11 @@ const mapOptions = computed<mapboxgl.MapOptions>(() => ({
   container: 'mapbox-map',
   style: 'mapbox://styles/mapbox/satellite-streets-v12',
   center: centerRef.value,
-  zoom: 2.5,
+  zoom: DEFAULT_ZOOM_LEVEL,
 }));
 const mapbox = shallowRef<mapboxgl.Map>();
 const isMapLoaded = ref(false);
-const zoomLevel = defineModel<number>({ default: 2.5 });
+const zoomLevel = defineModel<number>({ default: DEFAULT_ZOOM_LEVEL });
 
 const mapContainer = useTemplateRef('mapContainer');
 const { width, height } = useElementSize(mapContainer);
