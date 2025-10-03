@@ -22,16 +22,16 @@ const isMarkerDisplayed = computed(() => isMacroZoomLevel.value && spots.value);
   <div class="flex flex-col h-screen relative">
     <div class="absolute z-10 top-3 left-3 right-3">
       <NavigationHeader to="/">
-        <LocationSearch v-model="selectedLocation" class="h-fit"></LocationSearch>
+        <LocationSearch v-model="selectedLocation" class="h-fit" />
       </NavigationHeader>
     </div>
     <div class="flex-1 relative">
       <Map class="h-full" :center v-model="zoomLevel">
         <Controls />
         <template v-if="spots">
-          <MarkerWrapper :spots v-if="isMarkerDisplayed"></MarkerWrapper>
+          <MarkerWrapper :spots v-if="isMarkerDisplayed" />
           <template v-else>
-            <SpotLayer :spots v-model="selectedSpot"></SpotLayer>
+            <SpotLayer :spots v-model="selectedSpot" />
             <Popup v-if="selectedSpot" :coords="safeselectedSpotCoords">
               <Card :spot="selectedSpot" />
             </Popup>

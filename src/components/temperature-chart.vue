@@ -32,14 +32,14 @@ const temperatureChartData = computed(() => ({
   labels: labels.value,
   datasets: [
     {
-      label: 'Air Temp °C',
+      label: 'Air Temp (°C)',
       data: props.spot.observations.map((o: Observation) => o.airTemperature),
       borderColor: CHART_COLORS.airTemperature,
       backgroundColor: CHART_COLORS.airTemperature,
       tension: 0.3,
     },
     {
-      label: 'Water Temp °C',
+      label: 'Water Temp (°C)',
       data: props.spot.observations.map((o: Observation) => o.waterTemperature),
       borderColor: CHART_COLORS.waterTemperature,
       backgroundColor: CHART_COLORS.waterTemperature,
