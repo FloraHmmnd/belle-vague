@@ -7,7 +7,6 @@ const { data: spots } = useFetchSpots();
 
 const selectedLocation = ref<GeocodingFeature>();
 const center = computed(() => selectedLocation.value?.geometry.coordinates);
-const isMapLoaded = ref(false);
 const selectedSpot = ref<Spot>();
 const safeselectedSpotCoords = computed(() =>
   typeof selectedSpot.value?.coordinates === 'string'
@@ -16,6 +15,7 @@ const safeselectedSpotCoords = computed(() =>
 );
 const zoomLevel = ref<number>();
 const isMacroZoomLevel = computed(() => zoomLevel.value && zoomLevel.value >= 6);
+const isMarkerDisplayed = computed(() => isMacroZoomLevel.value && spots.value);
 </script>
 
 <template>
@@ -26,25 +26,16 @@ const isMacroZoomLevel = computed(() => zoomLevel.value && zoomLevel.value >= 6)
       </NavigationHeader>
     </div>
     <div class="flex-1 relative">
-      <Map
-        class="h-full"
-        :center
-        v-model:is-map-loaded="isMapLoaded"
-        v-model:zoom-level="zoomLevel"
-      >
+      <Map class="h-full" :center v-model="zoomLevel">
         <Controls />
-        <template v-if="spots && !isMacroZoomLevel">
-          <SpotLayer :spots v-model="selectedSpot"></SpotLayer>
-          <Popup v-if="selectedSpot" :coords="safeselectedSpotCoords">
-            <Card :spot="selectedSpot" />
-          </Popup>
-        </template>
-        <template v-if="isMapLoaded && isMacroZoomLevel">
-          <Marker v-for="spot in spots" :key="spot.id" :coords="spot.coordinates">
-            <Popup>
-              <Card :spot />
+        <template v-if="spots">
+          <MarkerWrapper :spots v-if="isMarkerDisplayed"></MarkerWrapper>
+          <template v-else>
+            <SpotLayer :spots v-model="selectedSpot"></SpotLayer>
+            <Popup v-if="selectedSpot" :coords="safeselectedSpotCoords">
+              <Card :spot="selectedSpot" />
             </Popup>
-          </Marker>
+          </template>
         </template>
       </Map>
     </div>

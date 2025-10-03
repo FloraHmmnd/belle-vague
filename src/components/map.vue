@@ -29,8 +29,8 @@ const mapOptions = computed<mapboxgl.MapOptions>(() => ({
   zoom: 2.5,
 }));
 const mapbox = shallowRef<mapboxgl.Map>();
-const isMapLoaded = defineModel<boolean>('isMapLoaded', { default: false });
-const zoomLevel = defineModel<number>('zoomLevel', { default: 2.5 });
+const isMapLoaded = ref(false);
+const zoomLevel = defineModel<number>({ default: 2.5 });
 
 const mapContainer = useTemplateRef('mapContainer');
 const { width, height } = useElementSize(mapContainer);

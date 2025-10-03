@@ -23,11 +23,15 @@ const geojsonPoints = computed<FeatureCollection<Point>>(() => ({
   })),
 }));
 
-watch(isMapLoaded, () => {
-  if (!isMapLoaded.value) return;
-  setLayer();
-  addEventsListenner();
-});
+watch(
+  isMapLoaded,
+  () => {
+    if (!isMapLoaded.value) return;
+    setLayer();
+    addEventsListenner();
+  },
+  { immediate: true },
+);
 
 function setLayer() {
   if (!mapbox.value) return;
