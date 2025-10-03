@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import Mapbox from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { MAPBOX_PROVIDE_INJECT, DEFAULT_CENTER } from '../types/map';
-import type { LngLatLike } from 'mapbox-gl';
+import { MAPBOX_PROVIDE_INJECT, DEFAULT_CENTER, DEFAULT_ZOOM_LEVEL } from '../types/map';
 import { useElementSize } from '@vueuse/core';
 
 defineOptions({
@@ -12,28 +11,30 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<{
-    center?: LngLatLike;
+    center?: [number, number];
   }>(),
   {
-    center: (): LngLatLike => DEFAULT_CENTER,
+    center: (): [number, number] => DEFAULT_CENTER,
   },
 );
 
 const accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 const centerRef = computed(() => props.center);
-const options = computed<mapboxgl.MapOptions>(() => ({
+const mapOptions = computed<mapboxgl.MapOptions>(() => ({
   accessToken,
   container: 'mapbox-map',
   style: 'mapbox://styles/mapbox/satellite-streets-v12',
   center: centerRef.value,
-  zoom: 2.5,
+  zoom: DEFAULT_ZOOM_LEVEL,
 }));
 const mapbox = shallowRef<mapboxgl.Map>();
-const isMapLoaded = defineModel<boolean>({ default: false });
+const isMapLoaded = ref(false);
+const zoomLevel = defineModel<number>({ default: DEFAULT_ZOOM_LEVEL });
+
 const mapContainer = useTemplateRef('mapContainer');
 const { width, height } = useElementSize(mapContainer);
 
-provide(MAPBOX_PROVIDE_INJECT, { mapbox });
+provide(MAPBOX_PROVIDE_INJECT, { mapbox, isMapLoaded });
 
 watch(centerRef, () => {
   if (!mapbox.value) return;
@@ -49,9 +50,13 @@ watch([width, height, isMapLoaded], () => {
 });
 
 onMounted(() => {
-  mapbox.value = new Mapbox.Map(options.value);
+  mapbox.value = new Mapbox.Map(mapOptions.value);
   mapbox.value.on('style.load', () => {
     isMapLoaded.value = true;
+  });
+  mapbox.value.on('zoom', () => {
+    if (!mapbox.value) return;
+    zoomLevel.value = mapbox.value.getZoom();
   });
 });
 

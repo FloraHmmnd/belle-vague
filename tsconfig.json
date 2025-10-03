@@ -7,7 +7,7 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {},
-    "types": ["unplugin-vue-router/client"],
+    "types": ["vite/client", "vue", "unplugin-vue-router/client"],
     "skipLibCheck": true
 
   },

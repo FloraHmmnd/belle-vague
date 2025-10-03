@@ -1,8 +1,8 @@
 import type { InjectionKey, Ref } from 'vue';
-import type { LngLatLike } from 'mapbox-gl';
 
 export interface MapInjected {
   mapbox: Ref<mapboxgl.Map | undefined>;
+  isMapLoaded: Ref<boolean>;
 }
 
 export const MAPBOX_PROVIDE_INJECT = Symbol(
@@ -37,4 +37,6 @@ export interface GeocodingFeature {
   }[];
 }
 
-export const DEFAULT_CENTER = [2.2137, 46.2276] as [number, number];
+export const DEFAULT_CENTER: [number, number] = [2.2137, 46.2276];
+
+export const DEFAULT_ZOOM_LEVEL = 2.5;

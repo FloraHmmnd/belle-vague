@@ -1,10 +1,8 @@
-import { LngLat, LngLatLike } from 'mapbox-gl';
-
 export interface Spot {
   id: string;
   name: string;
   address: string;
-  coordinates: LngLatLike;
+  coordinates: [number, number];
   level: Level;
   bestSeason: BestSeason;
   photo: string;
@@ -23,7 +21,7 @@ export interface SpotDetail {
   id: string;
   name: string;
   address: string;
-  coordinates: LngLatLike;
+  coordinates: [number, number];
   level: Level;
   bestSeason: BestSeason;
   photo: string;
