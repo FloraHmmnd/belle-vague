@@ -44,7 +44,7 @@ function setLayer() {
     type: 'circle',
     source: sourceId,
     paint: {
-      'circle-radius': 5,
+      'circle-radius': 7,
       'circle-color': '#1A4F9C',
       'circle-stroke-color': '#40E0D0',
       'circle-stroke-width': 2,
