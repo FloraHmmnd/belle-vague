@@ -1,9 +1,7 @@
 <template>
   <div class="min-h-screen flex flex-col relative">
     <div class="flex-1 bg-neutral">
-      <RouterLink to="/" class="sticky top-0">
-        <ReturnBtn />
-      </RouterLink>
+      <NavigationHeader to="/" class="sticky top-0" />
       <p class="text-gradient text-2xl font-quicksand p-6 leading-relaxed">
         Hi! I'm <span class="font-bold">Flora Hommand</span>, a frontend developer based in
         <span class="italic">Marseille, France</span>. I specialize in

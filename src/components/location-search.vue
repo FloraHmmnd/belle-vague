@@ -23,7 +23,7 @@ onClickOutside(searchRefContainer, () => {
 </script>
 
 <template>
-  <div class="w-80 bg-white p-2 border rounded font-quicksand" ref="searchRefContainer">
+  <div class="w-60 bg-white p-2 border rounded font-quicksand" ref="searchRefContainer">
     <input placeholder="Rechercher un lieu..." type="text" v-model="query" class="w-full" />
     <div v-if="isFetching" class="text-gray-500 text-sm">Recherche...</div>
     <div v-if="isError" class="text-red-500 text-sm">Erreur de chargement</div>

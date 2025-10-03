@@ -15,6 +15,7 @@ declare module 'vue' {
     LocationSearch: typeof import('./components/location-search.vue')['default']
     Map: typeof import('./components/map.vue')['default']
     Marker: typeof import('./components/marker.vue')['default']
+    NavigationHeader: typeof import('./components/navigation-header.vue')['default']
     Observations: typeof import('./components/observations.vue')['default']
     Popup: typeof import('./components/popup.vue')['default']
     ReturnBtn: typeof import('./components/return-btn.vue')['default']
