@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import Mapbox from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { MAPBOX_PROVIDE_INJECT, DEFAULT_CENTER, DEFAULT_ZOOM_LEVEL } from '../types/map';
+import {
+  MAPBOX_PROVIDE_INJECT,
+  DEFAULT_CENTER,
+  DEFAULT_ZOOM_LEVEL,
+  FOCUSED_ZOOM_LEVEL,
+} from '../types/map';
 import { useElementSize } from '@vueuse/core';
 
 defineOptions({
@@ -39,8 +44,8 @@ provide(MAPBOX_PROVIDE_INJECT, { mapbox, isMapLoaded });
 watch(centerRef, () => {
   if (!mapbox.value) return;
   mapbox.value.setCenter(centerRef.value);
-  if (mapbox.value.getZoom() < 12) {
-    mapbox.value.setZoom(12);
+  if (mapbox.value.getZoom() < FOCUSED_ZOOM_LEVEL) {
+    mapbox.value.setZoom(FOCUSED_ZOOM_LEVEL);
   }
 });
 
