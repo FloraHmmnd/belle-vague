@@ -40,3 +40,4 @@ export interface GeocodingFeature {
 export const DEFAULT_CENTER: [number, number] = [2.2137, 46.2276];
 
 export const DEFAULT_ZOOM_LEVEL = 2.5;
+export const FOCUSED_ZOOM_LEVEL = 5;
